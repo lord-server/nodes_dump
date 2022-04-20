@@ -54,7 +54,7 @@ core.after(0, function()
 		end
 	end
 
-	local file = io.open(core.get_worldpath() .. '/panorama_nodes.json', 'wb')
+	local file = io.open(core.get_worldpath() .. '/nodes_dump.json', 'wb')
 	local json = core.write_json(game, true)
 	file:write(json)
 	file:close()
