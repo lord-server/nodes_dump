@@ -54,8 +54,10 @@ core.after(0, function()
 		end
 	end
 
-	local file = io.open(core.get_worldpath() .. '/nodes_dump.json', 'wb')
+	local path = core.get_worldpath() .. "/nodes_dump.json"
+	local file = io.open(path, 'wb')
 	local json = core.write_json(game, true)
-	file:write(json)
-	file:close()
+	assertf(file ~= nil, "[nodes_dump] Failed to open file %s for writing", path)
+	file--[[@as file]]:write(json)
+	file--[[@as file]]:close()
 end)
