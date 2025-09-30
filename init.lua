@@ -37,7 +37,9 @@ core.after(0, function()
 	sanitize_table(game)
 
 	for name, node in pairs(game.nodes) do
+		--- @diagnostic disable-next-line: undefined-field не проверялось. Мод живёт давно, порблем не наблюдалось.
 		if node.tiles ~= nil and node.tiles.name ~= nil then
+			--- @diagnostic disable-next-line: undefined-field не проверялось. Мод живёт давно, порблем не наблюдалось.
 			game.nodes[name]["tiles"] = {node["tiles"]["name"]}
 		end
 
@@ -58,6 +60,6 @@ core.after(0, function()
 	local file = io.open(path, 'wb')
 	local json = core.write_json(game, true)
 	assertf(file ~= nil, "[nodes_dump] Failed to open file %s for writing", path)
-	file--[[@as file]]:write(json)
+	file--[[@as file]]:write(json--[[@as string]])
 	file--[[@as file]]:close()
 end)
